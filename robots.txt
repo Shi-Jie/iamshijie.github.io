@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://shi-jie.github.io/sitemap.xml 

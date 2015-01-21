@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Tools | My Octopress Blog]]></title>
+  <link href="http://shi-jie.github.io/blog/categories/tools/atom.xml" rel="self"/>
+  <link href="http://shi-jie.github.io/"/>
+  <updated>2015-01-21T09:44:31+08:00</updated>
+  <id>http://shi-jie.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[使用octopress创建个人博客]]></title>
+    <link href="http://shi-jie.github.io/blog/2015/01/21/how-to-setup-blog-with-octopress/"/>
+    <updated>2015-01-21T09:16:24+08:00</updated>
+    <id>http://shi-jie.github.io/blog/2015/01/21/how-to-setup-blog-with-octopress</id>
+    <content type="html"><![CDATA[<p>Refer to <a href="http://octopress.org/docs/setup">this link</a></p>
+
+<p>开始之前的准备工作：安装Git、ruby、bundler。</p>
+
+<h3>准备</h3>
+
+<ol>
+<li><p>下载octopress: <code>git clone git://github.com/imathis/octopress.git octopress</code></p></li>
+<li><p>进入octopress目录，执行<code>rake install</code></p></li>
+</ol>
+
+
+<h3>创建部署</h3>
+
+<ol>
+<li><p>创建一个新的Github的空repo，并且命名为iamshijie.github.io</p></li>
+<li><p>进入自己下载的octopress的目录并执行<code>rake setup_github_pages</code>。当提示输入repo地址时，输入上一步创建的git地址：<code>git@github.com:Shi-Jie/iamshijie.github.io.git</code></p></li>
+<li><p>继续在octopress目录下执行<code>rake generate </code>。此时，打开<a href="http://iamshijie.github.io.git">http://iamshijie.github.io.git</a>就能看到blog原型。再执行<code>rake deploy</code></p></li>
+<li><p>git提交。本别执行<code>git add .</code> 、<code>git commit -m 'your message'</code>、<code>git push origin source</code></p></li>
+<li><p>修改个人blog的默认分支为source，而非master <a href="https://github.com/iamshijie/iamshijie.github.io/settings">git link</a></p></li>
+</ol>
+
+
+<h3>创建博客</h3>
+
+<p>这部分可以参考之前在QA community的<a href="http://thoughtworks-china-qa.github.io/blog/2015/01/13/how-to-post-to-this-blog/">blog</a>。</p>
+
+<ol>
+<li><p>clone博客repo到本地：<code>git clone git@github.com:iamshijie/iamshijie.github.io.git</code></p>
+
+<p> <strong>确保你的默认分支是source。即<code>git status</code>后看到的是</strong></p>
+
+<pre><code class="`"> Shi-Jie:iamshijie.github.io shijie$ git status
+ On branch source
+ Your branch is up-to-date with 'origin/source'.
+ nothing to commit, working directory clean
+</code></pre></li>
+<li><p>创建新post。在repo下执行<code>rake new_post["How to create blog with octopress"]</code></p></li>
+<li><p>修改上一步生成的markdown文件，直接在默认生成的内容后进行添加编辑：</p>
+
+<pre><code class="`"> ---
+ layout: post
+ title: "How to setup blog with octopress"
+ date: 2015-01-21 09:16:24 +0800
+ comments: true
+ categories:
+ ---
+</code></pre></li>
+<li><p>使用<code>rake preview</code>进行预览</p></li>
+<li><p>确认无误后。使用<code>rake gen_deploy</code>发布的master。完成后，就可以在个人<a href="http://iamshijie.github.io">http://iamshijie.github.io</a>看到效果</p></li>
+<li><p>将改动提交到source分支</p>
+
+<pre><code class="`"> git add .
+ git commit -m 'Post my first blog. - ShiJie'
+ git push
+</code></pre></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>
